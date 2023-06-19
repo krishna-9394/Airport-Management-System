@@ -3,18 +3,13 @@ const bodyParser = require('body-parser');
 const connection = require('./db');
 const app = express();
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static("views"));
 app.use(express.static("public"));
 
-
-
 const pilotTableHeaders = ["Flight ID", "Pilot ID", "From", "To Cities", "Arrival", "DepartureTimes", "Staff ID", "Staff Name", "Contact No"];
-
 const staffTableHeaders = ["Flight ID", "Pilot ID", "From", "To Cities", "Arrival", "DepartureTimes", "Passenger Name", "Passenger ID", "Staff ID"];
-
 const passengerTableHeaders = ["Ticket ID", "Flight ID", "Passenger ID", "Passenger Name", "Contact No", "From", "To Cities", "Arrival", "DepartureTimes"];
 
 class pilotTableData
@@ -32,7 +27,6 @@ class pilotTableData
         this.contactNo = contactNo;
     }
 };
-
 class staffTableData
 {
     constructor (flightID, pilotID, from, toCities, arrival, departureTime, passengerName, passengerID, staffID)
@@ -48,7 +42,6 @@ class staffTableData
         this.staffID = staffID;
     }
 };
-
 class passengerTableData
 {
     constructor (ticketID, flightID, passengerID, passengerName, contactNo, from, toCities, arrival, departureTime)
@@ -66,15 +59,8 @@ class passengerTableData
 };
 
 const passengerTableDatas = [];
-
 const pilotTableDatas = [];
-
 const staffTableDatas = [];
-
-
-
-
-
 
 function addDataToPilotTable()
 {
@@ -86,20 +72,14 @@ function addDataToPilotTable()
 
 addDataToPilotTable();
 //TODO: function add data to staff table
-
 //TODO: function add data to passenger table
-
-
-
 
 app.get("/", function (req, res)
 {
     res.render("index");
 });
 
-
 var message = "";
-
 
 app.get("/:root", function (req, res)
 {
@@ -120,8 +100,6 @@ app.get("/:root", function (req, res)
         res.render("formPage", { root: req.params.root, message: message });
     }
 });
-
-
 
 app.post('/:root', function (req, res)
 {
@@ -329,14 +307,10 @@ app.post('/:root', function (req, res)
     else res.render("formPage", { root: 'admin' });
 });
 
-
-
-
-
 app.listen(3000, function ()
 {
     console.log("Server started on port 3k");
-
+    console.log("https://16.171.52.172:3000/");
 });
 
 function adminThings()
