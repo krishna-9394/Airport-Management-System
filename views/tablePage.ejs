@@ -1,0 +1,35 @@
+<%- include("partials/header"); -%>
+
+
+<h2 class="subHeading" style="padding: 5vh 0;">
+    <%= title %>
+</h2>
+
+<table class="Display-table">
+    <tr>
+        <% for(var i=0;i<tableHeaders.length;++i){  %>
+        <th>
+            <%= tableHeaders[i]  %>
+        </th>
+        <%     } %>
+    </tr>
+
+    <% for(var i=0;i<tableDatas.length;++i){ %>
+    <tr>
+        <%   for(const key in tableDatas[i]){ %>
+        <td>
+            <%= tableDatas[i][key]     %>
+        </td>
+        <%   } %>
+    </tr>
+    <% } %>
+
+</table>
+
+</body>
+
+<footer>
+    <%- include("partials/footer.ejs"); -%>
+</footer>
+
+</html>

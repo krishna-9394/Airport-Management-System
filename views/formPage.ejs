@@ -1,0 +1,53 @@
+<%- include("partials/header.ejs"); -%>
+
+
+<div class="form-group">
+
+    <% if(message.length>0){ %>
+    <%     alert(message); %>
+    <%  } %>
+
+
+    <form action="/<%=root%>" method="post">
+        <%   if(root=='query' || root=='display'){  %>
+        <label for="query">Query</label><br>
+        <textarea class="form-control" name="query" id="query" cols="30" rows="10"
+            style="width: 372px; height: 158px;"></textarea>
+        <%   }  %>
+
+        <%   if(root!='query' && root!='display'){  %>
+        <label for="username">Username</label><br>
+        <input class="form-control" type="text" id="username" name="username"><br>
+        <%   }  %>
+
+        <%   if(root=='admin'){  %>
+        <label for="password">Password</label><br>
+        <input class="form-control" type="password" id="password" name="password"><br>
+        <%   }  %>
+        <%  if(root=='staff'){ %>
+        <label for="staffID">Staff ID</label><br>
+        <input class="form-control" type="password" id="staffID" name="staffID"><br>
+        <%  }  %>
+        <%  if(root=='pilot'){ %>
+        <label for="pilotID">Pilot ID</label><br>
+        <input class="form-control" type="password" id="pilotID" name="pilotID"><br>
+        <%  }  %>
+        <%  if(root=='passenger'){ %>
+        <label for="ticketID">Ticket ID</label><br>
+        <input class="form-control" type="password" id="ticketID" name="ticketID"><br>
+        <%  }  %>
+        <%   if(root=='query' || root=='display'){  %>
+        <button type="submit" id="submit">Execute</button>
+        <%   }  %>
+        <%   if(root!='query' && root!='display'){  %>
+        <button type="submit" id="submit">LOGIN</button>
+        <%   }  %>
+    </form>
+    <%   if(root=='display'){  %>
+    <p style="width: 372px; height: 158px;"><%= message %></p>
+    <%   }  %>
+</div>
+
+<footer>
+    <%- include("partials/footer.ejs"); -%>
+</footer>
